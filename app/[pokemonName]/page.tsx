@@ -14,7 +14,7 @@ export default async function PokemonPage({
   return (
     <PaddingContainer>
       <div className='flex flex-col items-center justify-center h-[calc(100vh-110px)] overflow-y-hidden'>
-        <div className='flex items-center justify-between sm:justify-around sm:px-12 w-full'>
+        <div className='flex items-center justify-between sm:justify-around w-full'>
           <h1 className='text-4xl font-bold sm:my-10 text-center uppercase'>
             {pokemonObject.name}
           </h1>
