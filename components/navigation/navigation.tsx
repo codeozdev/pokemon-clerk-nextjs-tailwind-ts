@@ -1,27 +1,32 @@
 import Link from 'next/link'
 import PaddingContainer from '@/components/layout/padding-container'
+import ThemeButton from '@/components/ThemeButton'
+import { auth, UserButton } from '@clerk/nextjs'
 
 export default function Navigation() {
+  const { userId } = auth()
+
   return (
     <PaddingContainer>
       <div className='flex items-center justify-between'>
         <Link href='/'>
           <div className='text-lg sm:text-3xl font-bold uppercase'>Pokemon</div>
         </Link>
-        <nav>
-          <ul className='flex items-center gap-5'>
-            <li>
+        <div className='flex items-center gap-5'>
+          {!userId && (
+            <>
               <Link href={'/sign-in'} className='hover:underline'>
                 Sign In
               </Link>
-            </li>
-            <li>
+
               <Link href={'/sign-up'} className='hover:underline'>
                 Sign Up
               </Link>
-            </li>
-          </ul>
-        </nav>
+            </>
+          )}
+          <ThemeButton />
+          <UserButton afterSignOutUrl='/' />
+        </div>
       </div>
     </PaddingContainer>
   )
