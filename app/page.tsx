@@ -1,7 +1,9 @@
-import Image from 'next/image'
+import PokemonGrid from '@/components/pokemon-grid'
+import { getPokemonList } from '@/lib/pokemon-api'
 
-export default function Home() {
-  return (
-    <main>Hello</main>
-  )
+export default async function Home() {
+  // Load in data.
+  const pokemonList = await getPokemonList()
+
+  return <PokemonGrid pokemonList={pokemonList} />
 }
